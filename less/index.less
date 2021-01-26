@@ -1,0 +1,283 @@
+@hl_color:#1b2f90;
+@bg_color:#f9f9f6;
+@time: 1.5s;
+
+body{
+    background: #ffc400;
+}
+// 居中
+.center{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+// 汉克狗
+.dog{
+    width: 300px;
+    height: 400px;
+    position: relative;
+    // 前额
+    .forehead{
+        width: 102px;
+        height: 48px;
+        background:@bg_color;       
+        border-radius: ~'51px / 40px 40px 8px 8px';
+    }
+    // 脸颊
+    .face{
+        width: 110px;
+        height: 68px;
+        background:@bg_color;
+        top: 20px;
+        border-radius:50%;
+    }
+    // 下巴
+    .chin{
+        width: 104px;
+        height: 36px;
+        background:@bg_color;
+        top: 60px;
+        border-radius:~'52px / 0px 0px 36px 36px';
+        z-index: 2;
+    }
+    // 耳朵
+    .ear{
+        width: 16px;
+        height: 70px;
+        background:@hl_color;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 29px;
+        transform-origin: 50% 0;
+        transform: translate(-42px,0) rotate(10deg);
+        z-index: -1;
+        animation: rotate @time ease-out infinite;
+        // 右耳
+        &.right{
+            transform: scale(-1,1) translate(-26px,0) rotate(10deg);
+            animation: rotate-r @time ease-out infinite;
+        }
+    }
+    // 眼影
+    .birthmark{
+        width: 30px;
+        height: 36px;
+        background:@hl_color;
+        border-radius:~'15px / 17px 23px 2px 13px';
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 10px;
+        transform:translate(15px,0) rotate(-10deg);
+    }
+    // 眼睛
+    .eye{
+        width: 24px;
+        height: 24px;
+        background:@bg_color;
+        border-radius:~'12px / 13px 12px 12px 2px';
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        transform-origin: 50% 0;
+        transform: translate(-43px,0) rotate(10deg);
+        z-index: 2;
+        box-shadow: 1px 0px 0px 0px #000 inset, -1px 0px 5px 1px #ddd;
+        overflow: hidden;
+        // 右眼
+        &.right{
+            transform: scale(-1,1) translate(-19px,0) rotate(10deg);
+            box-shadow: 1px 0px 0px 0px #000 inset;
+        }
+        // 眼球
+        .pupil{
+            width: 26px;
+            height: 26px;
+            background:#e79101;
+            border-radius:50%;
+            position: absolute;
+            top: 1px;
+            left: 3px;
+            box-shadow: 0 0 8px 0 #333 inset;
+            animation: translate @time ease-out infinite;
+            // 黑眼珠
+            &:before{
+                content: '';
+                width: 18px;
+                height: 18px;
+                background:#000;
+                border-radius:50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            // 眼球高光
+            &:after{
+                content: '';
+                width: 5px;
+                height: 5px;
+                background:#fff;
+                border-radius:50%;
+                position: absolute;
+                top: 10px;
+                left: 5px;
+                transform: translate(-50%,-50%);
+            }
+        }
+    }
+    // 鼻子
+    .nose{
+        width: 62px;
+        height: 32px;
+        top: 42px;
+        background: #363035;
+        z-index: 3;
+        border-radius:~'31px / 10px 10px 22px 22px';
+        // 鼻子高光
+        &:before{
+            content: '';
+            width: 59px;
+            height: 10px;
+            position: absolute;
+            left: 50%;
+            top: 1px;
+            transform: translate(-50%,0);
+            border-radius:~'30px / 8px 8px 2px 2px';
+            background: linear-gradient(30deg,#fff 0%,#fff 8%,#b1aeb1 15%,#b1aeb1 50%,#544d53 100%);
+        }
+        // 左鼻孔
+        .nostril{
+            width: 15px;
+            height: 4px;
+            position: absolute;
+            top: 19px;
+            left: 50%;
+            background: linear-gradient(0deg,#363035 0%,#000 100%);
+            border-radius: 50%;
+            transform:translate(-21px,0) rotate(30deg);
+            animation: resize @time ease-out infinite;
+            // 右鼻孔
+            &.right{
+                transform:scale(-1,1) translate(-7px,0) rotate(30deg);
+            }
+        }
+    }
+    // 嘴巴
+    .mouth{
+        width: 65px;
+        height: 24px;
+        background: #671316;
+        border-radius:~'34px / 0px 0px 24px 24px';
+        box-shadow: 0 0 4px 0 #000 inset;
+        top: 71px;
+        // overflow: hidden;
+        z-index: 2;
+        animation: open @time ease-out infinite;
+        // 嘴巴上层
+        &:before{
+            content: '';
+            width: 65px;
+            height: 7px;
+            background: @bg_color;
+            position: absolute;
+            top: -2px;
+            border-radius:~'34px / 0px 0px 5px 5px';
+            display: block;
+        }
+        // 牙齿
+        .teen{
+            width: 8px;
+            height: 3px;
+            background: @bg_color;
+            border-radius:~'4px / 0px 0px 0px 1px';
+            position: absolute;
+            left: 50%;
+            top: 4.2px;
+            transform:translate(-7.6px,0);
+            &.right{
+                transform:scale(-1,1) translate(0,0);
+                border-right: .5px solid #ddd;
+            }
+        }
+        // 舌头
+        .tongue{
+            width: 34px;
+            height: 14px;
+            background: #a2504f;
+            z-index: -1;
+            border-radius:~'17px / 0px 0px 7px 7px';
+            box-shadow: 0 0 4px 0 #111 inset;
+            top: -2px;
+            animation: extend @time ease-out infinite;
+        }
+    }
+    // 身体
+    .body{
+        width: 66px;
+        height: 70px;
+        background: @bg_color;
+        top: 89px;
+        border-radius: 50%;
+        z-index: 1;
+        // 手臂
+        .arm{
+            width: 26px;
+            height: 40px;
+            background: @bg_color;
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            border-radius: ~'13px / 20px 0px 14px 20px';
+            transform:translate(-43px,0) rotate(21deg);
+            // 手臂阴影
+            &:before{
+                content: '';
+                width: 5px;
+                height: 20px;
+                border-radius: ~'5px / 10px 0px 0px 10px';
+                box-shadow: -1px 0 0 0 rgba(200, 200, 200, 0.5);
+                position: absolute;
+                right: 6px;
+                top: 14px;
+                transform: rotate(-5deg);
+            }
+            &.right{
+                transform:scale(-1,1) translate(-17px,0) rotate(21deg);
+            }
+        }
+        // 腿
+        .leg{
+            width: 29px;
+            height: 50px;
+            background: linear-gradient(-85deg,#ddd 0%,#ddd 5%,@bg_color 20%,@bg_color 100%);
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            border-radius: ~'15px / 5px 5px 15px 45px';
+            transform:translate(-32px,0);
+            &.right{
+                transform:scale(-1,1) translate(-3px,0);
+            }
+            // 脚
+            .foot{
+                width: 29px;
+                height: 15px;
+                background: linear-gradient(-120deg,#ddd 0%,#ddd 10%,@bg_color 30%,@bg_color 100%);
+                position: absolute;
+                left: 2px;
+                bottom: -8px;
+                border-radius: ~'15px / 10px 10px 5px 5px';
+            }
+        }
+        .belly{
+            z-index: 2;
+            width: 60px;
+            height: 36px;
+            background: linear-gradient(0deg,#ddd 0%,@bg_color 20%,@bg_color 100%);
+            border-radius: ~'30px / 0px 0px 36px 36px';
+            top: 34px;
+        }
+    }
+}
